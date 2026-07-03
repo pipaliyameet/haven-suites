@@ -5,17 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * MAISON AURÉLIA — Luxury hotel & resort design system.
+ * Deep navy + antique gold on ivory. Cormorant Garamond display,
+ * Inter body. All colors in oklch. Never hardcode hex in JSX.
  */
 
 @theme inline {
@@ -59,77 +51,92 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-ivory: var(--ivory);
+  --color-navy: var(--navy);
+  --color-charcoal: var(--charcoal);
+  --font-serif: "Cormorant Garamond", "Playfair Display", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --tracking-luxury: 0.24em;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.25rem;
+  /* Base palette */
+  --ivory: oklch(0.982 0.006 85);
+  --navy: oklch(0.21 0.04 260);
+  --charcoal: oklch(0.16 0.01 60);
+  --gold: oklch(0.74 0.13 82);
+  --gold-soft: oklch(0.88 0.06 85);
+
+  --background: var(--ivory);
+  --foreground: var(--navy);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: var(--navy);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --popover-foreground: var(--navy);
+  --primary: var(--navy);
+  --primary-foreground: var(--ivory);
+  --secondary: oklch(0.94 0.01 80);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.95 0.008 85);
+  --muted-foreground: oklch(0.48 0.02 260);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.012 80);
+  --input: oklch(0.9 0.01 80);
+  --ring: var(--gold);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: var(--navy);
+  --sidebar-foreground: var(--ivory);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--navy);
+  --sidebar-accent: oklch(0.28 0.04 260);
+  --sidebar-accent-foreground: var(--ivory);
+  --sidebar-border: oklch(0.3 0.03 260);
+  --sidebar-ring: var(--gold);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
+  --background: oklch(0.14 0.02 260);
+  --foreground: oklch(0.96 0.01 85);
+  --card: oklch(0.19 0.03 260);
+  --card-foreground: oklch(0.96 0.01 85);
+  --popover: oklch(0.19 0.03 260);
+  --popover-foreground: oklch(0.96 0.01 85);
+  --primary: var(--gold);
+  --primary-foreground: oklch(0.14 0.02 260);
+  --secondary: oklch(0.24 0.03 260);
+  --secondary-foreground: oklch(0.96 0.01 85);
+  --muted: oklch(0.22 0.03 260);
+  --muted-foreground: oklch(0.72 0.02 85);
+  --accent: var(--gold);
+  --accent-foreground: oklch(0.14 0.02 260);
+  --destructive: oklch(0.65 0.2 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --ring: var(--gold);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar: oklch(0.11 0.02 260);
+  --sidebar-foreground: oklch(0.96 0.01 85);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: oklch(0.14 0.02 260);
+  --sidebar-accent: oklch(0.19 0.03 260);
+  --sidebar-accent-foreground: oklch(0.96 0.01 85);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: var(--gold);
 }
 
 @layer base {
@@ -140,5 +147,116 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
   }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection { background: var(--gold); color: var(--navy); }
+}
+
+/* ---------- Luxury utilities ---------- */
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-luxury);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+@utility gold-rule {
+  display: inline-block;
+  width: 3rem;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+}
+
+@utility container-editorial {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) { padding-inline: 2.5rem; }
+  @media (min-width: 1280px) { padding-inline: 4rem; }
+}
+
+@utility btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 0.85rem 1.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-luxury);
+  text-transform: uppercase;
+  transition: all 220ms ease;
+  border: 1px solid var(--gold);
+  &:hover { background: transparent; color: var(--gold); }
+}
+
+@utility btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--gold);
+  padding: 0.85rem 1.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-luxury);
+  text-transform: uppercase;
+  transition: all 220ms ease;
+  border: 1px solid var(--gold);
+  &:hover { background: var(--gold); color: var(--navy); }
+}
+
+@utility btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--ivory);
+  padding: 0.85rem 1.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-luxury);
+  text-transform: uppercase;
+  transition: all 220ms ease;
+  border: 1px solid color-mix(in oklab, var(--ivory) 60%, transparent);
+  &:hover { background: var(--ivory); color: var(--navy); border-color: var(--ivory); }
+}
+
+@utility surface-glass {
+  background: color-mix(in oklab, var(--ivory) 88%, transparent);
+  backdrop-filter: blur(18px) saturate(1.1);
+  border: 1px solid color-mix(in oklab, var(--gold) 25%, transparent);
+}
+
+@utility shadow-editorial {
+  box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--navy) 45%, transparent);
+}
+
+@utility hover-lift {
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 400ms;
+  &:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--navy) 40%, transparent); }
+}
+
+@utility image-cover {
+  overflow: hidden;
+  & img { transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1); }
+  &:hover img { transform: scale(1.05); }
 }
