@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -129,15 +130,17 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isDash = /^\/(account|admin|super|reception|housekeeping|kitchen|login)(\/|$)/.test(pathname);
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col bg-background text-foreground">
-        <SiteNavbar />
+        {!isDash && <SiteNavbar />}
         <main className="flex-1">
           <Outlet />
         </main>
-        <SiteFooter />
+        {!isDash && <SiteFooter />}
       </div>
       <Toaster position="top-center" richColors closeButton />
     </QueryClientProvider>
