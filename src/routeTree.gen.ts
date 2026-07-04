@@ -22,6 +22,7 @@ import { Route as PoolRouteImport } from './routes/pool'
 import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as MaintenanceRouteImport } from './routes/maintenance'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -96,6 +97,11 @@ const MaintenanceRoute = MaintenanceRouteImport.update({
   path: '/maintenance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
@@ -169,6 +176,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
@@ -218,6 +227,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
@@ -241,6 +251,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
@@ -264,6 +275,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
@@ -288,6 +300,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
   GalleryRoute: typeof GalleryRoute
+  LoginRoute: typeof LoginRoute
   MaintenanceRoute: typeof MaintenanceRoute
   OffersRoute: typeof OffersRoute
   PackagesRoute: typeof PackagesRoute
@@ -396,6 +409,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MaintenanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
@@ -464,6 +484,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
   GalleryRoute: GalleryRoute,
+  LoginRoute: LoginRoute,
   MaintenanceRoute: MaintenanceRoute,
   OffersRoute: OffersRoute,
   PackagesRoute: PackagesRoute,
