@@ -38,12 +38,16 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ReceptionIndexRouteImport } from './routes/reception.index'
+import { Route as KitchenIndexRouteImport } from './routes/kitchen.index'
+import { Route as HousekeepingIndexRouteImport } from './routes/housekeeping.index'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
 import { Route as ReceptionWalkinRouteImport } from './routes/reception.walkin'
 import { Route as ReceptionInvoicesRouteImport } from './routes/reception.invoices'
 import { Route as ReceptionGuestsRouteImport } from './routes/reception.guests'
 import { Route as ReceptionCheckoutRouteImport } from './routes/reception.checkout'
 import { Route as ReceptionCheckinRouteImport } from './routes/reception.checkin'
+import { Route as KitchenMenuRouteImport } from './routes/kitchen.menu'
+import { Route as HousekeepingMaintenanceRouteImport } from './routes/housekeeping.maintenance'
 import { Route as AccountRoomServiceRouteImport } from './routes/account.room-service'
 import { Route as AccountReviewsRouteImport } from './routes/account.reviews'
 import { Route as AccountProfileRouteImport } from './routes/account.profile'
@@ -196,6 +200,16 @@ const ReceptionIndexRoute = ReceptionIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ReceptionRoute,
 } as any)
+const KitchenIndexRoute = KitchenIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => KitchenRoute,
+} as any)
+const HousekeepingIndexRoute = HousekeepingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HousekeepingRoute,
+} as any)
 const AccountIndexRoute = AccountIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -225,6 +239,16 @@ const ReceptionCheckinRoute = ReceptionCheckinRouteImport.update({
   id: '/checkin',
   path: '/checkin',
   getParentRoute: () => ReceptionRoute,
+} as any)
+const KitchenMenuRoute = KitchenMenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => KitchenRoute,
+} as any)
+const HousekeepingMaintenanceRoute = HousekeepingMaintenanceRouteImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => HousekeepingRoute,
 } as any)
 const AccountRoomServiceRoute = AccountRoomServiceRouteImport.update({
   id: '/room-service',
@@ -268,8 +292,8 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
-  '/housekeeping': typeof HousekeepingRoute
-  '/kitchen': typeof KitchenRoute
+  '/housekeeping': typeof HousekeepingRouteWithChildren
+  '/kitchen': typeof KitchenRouteWithChildren
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
@@ -292,12 +316,16 @@ export interface FileRoutesByFullPath {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
+  '/kitchen/menu': typeof KitchenMenuRoute
   '/reception/checkin': typeof ReceptionCheckinRoute
   '/reception/checkout': typeof ReceptionCheckoutRoute
   '/reception/guests': typeof ReceptionGuestsRoute
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
   '/account/': typeof AccountIndexRoute
+  '/housekeeping/': typeof HousekeepingIndexRoute
+  '/kitchen/': typeof KitchenIndexRoute
   '/reception/': typeof ReceptionIndexRoute
 }
 export interface FileRoutesByTo {
@@ -310,8 +338,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
-  '/housekeeping': typeof HousekeepingRoute
-  '/kitchen': typeof KitchenRoute
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
@@ -333,12 +359,16 @@ export interface FileRoutesByTo {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
+  '/kitchen/menu': typeof KitchenMenuRoute
   '/reception/checkin': typeof ReceptionCheckinRoute
   '/reception/checkout': typeof ReceptionCheckoutRoute
   '/reception/guests': typeof ReceptionGuestsRoute
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
   '/account': typeof AccountIndexRoute
+  '/housekeeping': typeof HousekeepingIndexRoute
+  '/kitchen': typeof KitchenIndexRoute
   '/reception': typeof ReceptionIndexRoute
 }
 export interface FileRoutesById {
@@ -353,8 +383,8 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
-  '/housekeeping': typeof HousekeepingRoute
-  '/kitchen': typeof KitchenRoute
+  '/housekeeping': typeof HousekeepingRouteWithChildren
+  '/kitchen': typeof KitchenRouteWithChildren
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
@@ -377,12 +407,16 @@ export interface FileRoutesById {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
+  '/kitchen/menu': typeof KitchenMenuRoute
   '/reception/checkin': typeof ReceptionCheckinRoute
   '/reception/checkout': typeof ReceptionCheckoutRoute
   '/reception/guests': typeof ReceptionGuestsRoute
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
   '/account/': typeof AccountIndexRoute
+  '/housekeeping/': typeof HousekeepingIndexRoute
+  '/kitchen/': typeof KitchenIndexRoute
   '/reception/': typeof ReceptionIndexRoute
 }
 export interface FileRouteTypes {
@@ -422,12 +456,16 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/housekeeping/maintenance'
+    | '/kitchen/menu'
     | '/reception/checkin'
     | '/reception/checkout'
     | '/reception/guests'
     | '/reception/invoices'
     | '/reception/walkin'
     | '/account/'
+    | '/housekeeping/'
+    | '/kitchen/'
     | '/reception/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -440,8 +478,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faqs'
     | '/gallery'
-    | '/housekeeping'
-    | '/kitchen'
     | '/login'
     | '/maintenance'
     | '/offers'
@@ -463,12 +499,16 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/housekeeping/maintenance'
+    | '/kitchen/menu'
     | '/reception/checkin'
     | '/reception/checkout'
     | '/reception/guests'
     | '/reception/invoices'
     | '/reception/walkin'
     | '/account'
+    | '/housekeeping'
+    | '/kitchen'
     | '/reception'
   id:
     | '__root__'
@@ -506,12 +546,16 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/housekeeping/maintenance'
+    | '/kitchen/menu'
     | '/reception/checkin'
     | '/reception/checkout'
     | '/reception/guests'
     | '/reception/invoices'
     | '/reception/walkin'
     | '/account/'
+    | '/housekeeping/'
+    | '/kitchen/'
     | '/reception/'
   fileRoutesById: FileRoutesById
 }
@@ -526,8 +570,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
   GalleryRoute: typeof GalleryRoute
-  HousekeepingRoute: typeof HousekeepingRoute
-  KitchenRoute: typeof KitchenRoute
+  HousekeepingRoute: typeof HousekeepingRouteWithChildren
+  KitchenRoute: typeof KitchenRouteWithChildren
   LoginRoute: typeof LoginRoute
   MaintenanceRoute: typeof MaintenanceRoute
   OffersRoute: typeof OffersRoute
@@ -751,6 +795,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReceptionIndexRouteImport
       parentRoute: typeof ReceptionRoute
     }
+    '/kitchen/': {
+      id: '/kitchen/'
+      path: '/'
+      fullPath: '/kitchen/'
+      preLoaderRoute: typeof KitchenIndexRouteImport
+      parentRoute: typeof KitchenRoute
+    }
+    '/housekeeping/': {
+      id: '/housekeeping/'
+      path: '/'
+      fullPath: '/housekeeping/'
+      preLoaderRoute: typeof HousekeepingIndexRouteImport
+      parentRoute: typeof HousekeepingRoute
+    }
     '/account/': {
       id: '/account/'
       path: '/'
@@ -792,6 +850,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/reception/checkin'
       preLoaderRoute: typeof ReceptionCheckinRouteImport
       parentRoute: typeof ReceptionRoute
+    }
+    '/kitchen/menu': {
+      id: '/kitchen/menu'
+      path: '/menu'
+      fullPath: '/kitchen/menu'
+      preLoaderRoute: typeof KitchenMenuRouteImport
+      parentRoute: typeof KitchenRoute
+    }
+    '/housekeeping/maintenance': {
+      id: '/housekeeping/maintenance'
+      path: '/maintenance'
+      fullPath: '/housekeeping/maintenance'
+      preLoaderRoute: typeof HousekeepingMaintenanceRouteImport
+      parentRoute: typeof HousekeepingRoute
     }
     '/account/room-service': {
       id: '/account/room-service'
@@ -861,6 +933,33 @@ const AccountRouteChildren: AccountRouteChildren = {
 const AccountRouteWithChildren =
   AccountRoute._addFileChildren(AccountRouteChildren)
 
+interface HousekeepingRouteChildren {
+  HousekeepingMaintenanceRoute: typeof HousekeepingMaintenanceRoute
+  HousekeepingIndexRoute: typeof HousekeepingIndexRoute
+}
+
+const HousekeepingRouteChildren: HousekeepingRouteChildren = {
+  HousekeepingMaintenanceRoute: HousekeepingMaintenanceRoute,
+  HousekeepingIndexRoute: HousekeepingIndexRoute,
+}
+
+const HousekeepingRouteWithChildren = HousekeepingRoute._addFileChildren(
+  HousekeepingRouteChildren,
+)
+
+interface KitchenRouteChildren {
+  KitchenMenuRoute: typeof KitchenMenuRoute
+  KitchenIndexRoute: typeof KitchenIndexRoute
+}
+
+const KitchenRouteChildren: KitchenRouteChildren = {
+  KitchenMenuRoute: KitchenMenuRoute,
+  KitchenIndexRoute: KitchenIndexRoute,
+}
+
+const KitchenRouteWithChildren =
+  KitchenRoute._addFileChildren(KitchenRouteChildren)
+
 interface ReceptionRouteChildren {
   ReceptionCheckinRoute: typeof ReceptionCheckinRoute
   ReceptionCheckoutRoute: typeof ReceptionCheckoutRoute
@@ -894,8 +993,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
   GalleryRoute: GalleryRoute,
-  HousekeepingRoute: HousekeepingRoute,
-  KitchenRoute: KitchenRoute,
+  HousekeepingRoute: HousekeepingRouteWithChildren,
+  KitchenRoute: KitchenRouteWithChildren,
   LoginRoute: LoginRoute,
   MaintenanceRoute: MaintenanceRoute,
   OffersRoute: OffersRoute,
