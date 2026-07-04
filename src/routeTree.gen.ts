@@ -12,23 +12,28 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WeddingEventsRouteImport } from './routes/wedding-events'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SuperRouteImport } from './routes/super'
 import { Route as SuitesRouteImport } from './routes/suites'
 import { Route as SpaRouteImport } from './routes/spa'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RoomsRouteImport } from './routes/rooms'
 import { Route as RestaurantRouteImport } from './routes/restaurant'
+import { Route as ReceptionRouteImport } from './routes/reception'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PoolRouteImport } from './routes/pool'
 import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as MaintenanceRouteImport } from './routes/maintenance'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as KitchenRouteImport } from './routes/kitchen'
+import { Route as HousekeepingRouteImport } from './routes/housekeeping'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConferenceRouteImport } from './routes/conference'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -46,6 +51,11 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperRoute = SuperRouteImport.update({
+  id: '/super',
+  path: '/super',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SuitesRoute = SuitesRouteImport.update({
@@ -71,6 +81,11 @@ const RoomsRoute = RoomsRouteImport.update({
 const RestaurantRoute = RestaurantRouteImport.update({
   id: '/restaurant',
   path: '/restaurant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReceptionRoute = ReceptionRouteImport.update({
+  id: '/reception',
+  path: '/reception',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -103,6 +118,16 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KitchenRoute = KitchenRouteImport.update({
+  id: '/kitchen',
+  path: '/kitchen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HousekeepingRoute = HousekeepingRouteImport.update({
+  id: '/housekeeping',
+  path: '/housekeeping',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
@@ -133,6 +158,11 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AccountRoute = AccountRouteImport.update({
   id: '/account',
   path: '/account',
@@ -153,23 +183,28 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/conference': typeof ConferenceRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/housekeeping': typeof HousekeepingRoute
+  '/kitchen': typeof KitchenRoute
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
   '/pool': typeof PoolRoute
   '/privacy': typeof PrivacyRoute
+  '/reception': typeof ReceptionRoute
   '/restaurant': typeof RestaurantRoute
   '/rooms': typeof RoomsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spa': typeof SpaRoute
   '/suites': typeof SuitesRoute
+  '/super': typeof SuperRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
@@ -178,23 +213,28 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/conference': typeof ConferenceRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/housekeeping': typeof HousekeepingRoute
+  '/kitchen': typeof KitchenRoute
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
   '/pool': typeof PoolRoute
   '/privacy': typeof PrivacyRoute
+  '/reception': typeof ReceptionRoute
   '/restaurant': typeof RestaurantRoute
   '/rooms': typeof RoomsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spa': typeof SpaRoute
   '/suites': typeof SuitesRoute
+  '/super': typeof SuperRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
@@ -204,23 +244,28 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/conference': typeof ConferenceRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/housekeeping': typeof HousekeepingRoute
+  '/kitchen': typeof KitchenRoute
   '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
   '/pool': typeof PoolRoute
   '/privacy': typeof PrivacyRoute
+  '/reception': typeof ReceptionRoute
   '/restaurant': typeof RestaurantRoute
   '/rooms': typeof RoomsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spa': typeof SpaRoute
   '/suites': typeof SuitesRoute
+  '/super': typeof SuperRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
@@ -231,23 +276,28 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/admin'
     | '/blog'
     | '/careers'
     | '/conference'
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/housekeeping'
+    | '/kitchen'
     | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
     | '/pool'
     | '/privacy'
+    | '/reception'
     | '/restaurant'
     | '/rooms'
     | '/sitemap.xml'
     | '/spa'
     | '/suites'
+    | '/super'
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
@@ -256,23 +306,28 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/admin'
     | '/blog'
     | '/careers'
     | '/conference'
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/housekeeping'
+    | '/kitchen'
     | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
     | '/pool'
     | '/privacy'
+    | '/reception'
     | '/restaurant'
     | '/rooms'
     | '/sitemap.xml'
     | '/spa'
     | '/suites'
+    | '/super'
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
@@ -281,23 +336,28 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/admin'
     | '/blog'
     | '/careers'
     | '/conference'
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/housekeeping'
+    | '/kitchen'
     | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
     | '/pool'
     | '/privacy'
+    | '/reception'
     | '/restaurant'
     | '/rooms'
     | '/sitemap.xml'
     | '/spa'
     | '/suites'
+    | '/super'
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
@@ -307,23 +367,28 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
+  AdminRoute: typeof AdminRoute
   BlogRoute: typeof BlogRoute
   CareersRoute: typeof CareersRoute
   ConferenceRoute: typeof ConferenceRoute
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
   GalleryRoute: typeof GalleryRoute
+  HousekeepingRoute: typeof HousekeepingRoute
+  KitchenRoute: typeof KitchenRoute
   LoginRoute: typeof LoginRoute
   MaintenanceRoute: typeof MaintenanceRoute
   OffersRoute: typeof OffersRoute
   PackagesRoute: typeof PackagesRoute
   PoolRoute: typeof PoolRoute
   PrivacyRoute: typeof PrivacyRoute
+  ReceptionRoute: typeof ReceptionRoute
   RestaurantRoute: typeof RestaurantRoute
   RoomsRoute: typeof RoomsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpaRoute: typeof SpaRoute
   SuitesRoute: typeof SuitesRoute
+  SuperRoute: typeof SuperRoute
   TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
   WeddingEventsRoute: typeof WeddingEventsRoute
@@ -350,6 +415,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/super': {
+      id: '/super'
+      path: '/super'
+      fullPath: '/super'
+      preLoaderRoute: typeof SuperRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/suites': {
@@ -385,6 +457,13 @@ declare module '@tanstack/react-router' {
       path: '/restaurant'
       fullPath: '/restaurant'
       preLoaderRoute: typeof RestaurantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reception': {
+      id: '/reception'
+      path: '/reception'
+      fullPath: '/reception'
+      preLoaderRoute: typeof ReceptionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -429,6 +508,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kitchen': {
+      id: '/kitchen'
+      path: '/kitchen'
+      fullPath: '/kitchen'
+      preLoaderRoute: typeof KitchenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/housekeeping': {
+      id: '/housekeeping'
+      path: '/housekeeping'
+      fullPath: '/housekeeping'
+      preLoaderRoute: typeof HousekeepingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
@@ -471,6 +564,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/account': {
       id: '/account'
       path: '/account'
@@ -499,23 +599,28 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
+  AdminRoute: AdminRoute,
   BlogRoute: BlogRoute,
   CareersRoute: CareersRoute,
   ConferenceRoute: ConferenceRoute,
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
   GalleryRoute: GalleryRoute,
+  HousekeepingRoute: HousekeepingRoute,
+  KitchenRoute: KitchenRoute,
   LoginRoute: LoginRoute,
   MaintenanceRoute: MaintenanceRoute,
   OffersRoute: OffersRoute,
   PackagesRoute: PackagesRoute,
   PoolRoute: PoolRoute,
   PrivacyRoute: PrivacyRoute,
+  ReceptionRoute: ReceptionRoute,
   RestaurantRoute: RestaurantRoute,
   RoomsRoute: RoomsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpaRoute: SpaRoute,
   SuitesRoute: SuitesRoute,
+  SuperRoute: SuperRoute,
   TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,
   WeddingEventsRoute: WeddingEventsRoute,
