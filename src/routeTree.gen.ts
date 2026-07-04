@@ -37,6 +37,13 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccountIndexRouteImport } from './routes/account.index'
+import { Route as AccountRoomServiceRouteImport } from './routes/account.room-service'
+import { Route as AccountReviewsRouteImport } from './routes/account.reviews'
+import { Route as AccountProfileRouteImport } from './routes/account.profile'
+import { Route as AccountInvoicesRouteImport } from './routes/account.invoices'
+import { Route as AccountChatRouteImport } from './routes/account.chat'
+import { Route as AccountBookingsRouteImport } from './routes/account.bookings'
 
 const WeddingEventsRoute = WeddingEventsRouteImport.update({
   id: '/wedding-events',
@@ -178,11 +185,46 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountIndexRoute = AccountIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountRoomServiceRoute = AccountRoomServiceRouteImport.update({
+  id: '/room-service',
+  path: '/room-service',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountReviewsRoute = AccountReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountProfileRoute = AccountProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountInvoicesRoute = AccountInvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountChatRoute = AccountChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountBookingsRoute = AccountBookingsRouteImport.update({
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => AccountRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
+  '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
@@ -208,11 +250,17 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
+  '/account/bookings': typeof AccountBookingsRoute
+  '/account/chat': typeof AccountChatRoute
+  '/account/invoices': typeof AccountInvoicesRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reviews': typeof AccountReviewsRoute
+  '/account/room-service': typeof AccountRoomServiceRoute
+  '/account/': typeof AccountIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
@@ -238,12 +286,19 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
+  '/account/bookings': typeof AccountBookingsRoute
+  '/account/chat': typeof AccountChatRoute
+  '/account/invoices': typeof AccountInvoicesRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reviews': typeof AccountReviewsRoute
+  '/account/room-service': typeof AccountRoomServiceRoute
+  '/account': typeof AccountIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/account': typeof AccountRoute
+  '/account': typeof AccountRouteWithChildren
   '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
@@ -269,6 +324,13 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
+  '/account/bookings': typeof AccountBookingsRoute
+  '/account/chat': typeof AccountChatRoute
+  '/account/invoices': typeof AccountInvoicesRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reviews': typeof AccountReviewsRoute
+  '/account/room-service': typeof AccountRoomServiceRoute
+  '/account/': typeof AccountIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -301,11 +363,17 @@ export interface FileRouteTypes {
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
+    | '/account/bookings'
+    | '/account/chat'
+    | '/account/invoices'
+    | '/account/profile'
+    | '/account/reviews'
+    | '/account/room-service'
+    | '/account/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/account'
     | '/admin'
     | '/blog'
     | '/careers'
@@ -331,6 +399,13 @@ export interface FileRouteTypes {
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
+    | '/account/bookings'
+    | '/account/chat'
+    | '/account/invoices'
+    | '/account/profile'
+    | '/account/reviews'
+    | '/account/room-service'
+    | '/account'
   id:
     | '__root__'
     | '/'
@@ -361,12 +436,19 @@ export interface FileRouteTypes {
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
+    | '/account/bookings'
+    | '/account/chat'
+    | '/account/invoices'
+    | '/account/profile'
+    | '/account/reviews'
+    | '/account/room-service'
+    | '/account/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AccountRoute: typeof AccountRoute
+  AccountRoute: typeof AccountRouteWithChildren
   AdminRoute: typeof AdminRoute
   BlogRoute: typeof BlogRoute
   CareersRoute: typeof CareersRoute
@@ -592,13 +674,85 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account/': {
+      id: '/account/'
+      path: '/'
+      fullPath: '/account/'
+      preLoaderRoute: typeof AccountIndexRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/room-service': {
+      id: '/account/room-service'
+      path: '/room-service'
+      fullPath: '/account/room-service'
+      preLoaderRoute: typeof AccountRoomServiceRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/reviews': {
+      id: '/account/reviews'
+      path: '/reviews'
+      fullPath: '/account/reviews'
+      preLoaderRoute: typeof AccountReviewsRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/profile': {
+      id: '/account/profile'
+      path: '/profile'
+      fullPath: '/account/profile'
+      preLoaderRoute: typeof AccountProfileRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/invoices': {
+      id: '/account/invoices'
+      path: '/invoices'
+      fullPath: '/account/invoices'
+      preLoaderRoute: typeof AccountInvoicesRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/chat': {
+      id: '/account/chat'
+      path: '/chat'
+      fullPath: '/account/chat'
+      preLoaderRoute: typeof AccountChatRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/bookings': {
+      id: '/account/bookings'
+      path: '/bookings'
+      fullPath: '/account/bookings'
+      preLoaderRoute: typeof AccountBookingsRouteImport
+      parentRoute: typeof AccountRoute
+    }
   }
 }
+
+interface AccountRouteChildren {
+  AccountBookingsRoute: typeof AccountBookingsRoute
+  AccountChatRoute: typeof AccountChatRoute
+  AccountInvoicesRoute: typeof AccountInvoicesRoute
+  AccountProfileRoute: typeof AccountProfileRoute
+  AccountReviewsRoute: typeof AccountReviewsRoute
+  AccountRoomServiceRoute: typeof AccountRoomServiceRoute
+  AccountIndexRoute: typeof AccountIndexRoute
+}
+
+const AccountRouteChildren: AccountRouteChildren = {
+  AccountBookingsRoute: AccountBookingsRoute,
+  AccountChatRoute: AccountChatRoute,
+  AccountInvoicesRoute: AccountInvoicesRoute,
+  AccountProfileRoute: AccountProfileRoute,
+  AccountReviewsRoute: AccountReviewsRoute,
+  AccountRoomServiceRoute: AccountRoomServiceRoute,
+  AccountIndexRoute: AccountIndexRoute,
+}
+
+const AccountRouteWithChildren =
+  AccountRoute._addFileChildren(AccountRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AccountRoute: AccountRoute,
+  AccountRoute: AccountRouteWithChildren,
   AdminRoute: AdminRoute,
   BlogRoute: BlogRoute,
   CareersRoute: CareersRoute,
