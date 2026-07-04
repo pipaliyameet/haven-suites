@@ -12,24 +12,62 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WeddingEventsRouteImport } from './routes/wedding-events'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SuperRouteImport } from './routes/super'
 import { Route as SuitesRouteImport } from './routes/suites'
 import { Route as SpaRouteImport } from './routes/spa'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RoomsRouteImport } from './routes/rooms'
 import { Route as RestaurantRouteImport } from './routes/restaurant'
+import { Route as ReceptionRouteImport } from './routes/reception'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PoolRouteImport } from './routes/pool'
 import { Route as PackagesRouteImport } from './routes/packages'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as MaintenanceRouteImport } from './routes/maintenance'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as KitchenRouteImport } from './routes/kitchen'
+import { Route as HousekeepingRouteImport } from './routes/housekeeping'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConferenceRouteImport } from './routes/conference'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SuperIndexRouteImport } from './routes/super.index'
+import { Route as ReceptionIndexRouteImport } from './routes/reception.index'
+import { Route as KitchenIndexRouteImport } from './routes/kitchen.index'
+import { Route as HousekeepingIndexRouteImport } from './routes/housekeeping.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AccountIndexRouteImport } from './routes/account.index'
+import { Route as SuperSubscriptionsRouteImport } from './routes/super.subscriptions'
+import { Route as SuperSettingsRouteImport } from './routes/super.settings'
+import { Route as SuperChainsRouteImport } from './routes/super.chains'
+import { Route as SuperAuditRouteImport } from './routes/super.audit'
+import { Route as SuperAnalyticsRouteImport } from './routes/super.analytics'
+import { Route as ReceptionWalkinRouteImport } from './routes/reception.walkin'
+import { Route as ReceptionInvoicesRouteImport } from './routes/reception.invoices'
+import { Route as ReceptionGuestsRouteImport } from './routes/reception.guests'
+import { Route as ReceptionCheckoutRouteImport } from './routes/reception.checkout'
+import { Route as ReceptionCheckinRouteImport } from './routes/reception.checkin'
+import { Route as KitchenMenuRouteImport } from './routes/kitchen.menu'
+import { Route as HousekeepingMaintenanceRouteImport } from './routes/housekeeping.maintenance'
+import { Route as AdminRoomsRouteImport } from './routes/admin.rooms'
+import { Route as AdminRestaurantRouteImport } from './routes/admin.restaurant'
+import { Route as AdminReservationsRouteImport } from './routes/admin.reservations'
+import { Route as AdminReportsRouteImport } from './routes/admin.reports'
+import { Route as AdminPricingRouteImport } from './routes/admin.pricing'
+import { Route as AdminInventoryRouteImport } from './routes/admin.inventory'
+import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
+import { Route as AccountRoomServiceRouteImport } from './routes/account.room-service'
+import { Route as AccountReviewsRouteImport } from './routes/account.reviews'
+import { Route as AccountProfileRouteImport } from './routes/account.profile'
+import { Route as AccountInvoicesRouteImport } from './routes/account.invoices'
+import { Route as AccountChatRouteImport } from './routes/account.chat'
+import { Route as AccountBookingsRouteImport } from './routes/account.bookings'
 
 const WeddingEventsRoute = WeddingEventsRouteImport.update({
   id: '/wedding-events',
@@ -44,6 +82,11 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperRoute = SuperRouteImport.update({
+  id: '/super',
+  path: '/super',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SuitesRoute = SuitesRouteImport.update({
@@ -71,6 +114,11 @@ const RestaurantRoute = RestaurantRouteImport.update({
   path: '/restaurant',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReceptionRoute = ReceptionRouteImport.update({
+  id: '/reception',
+  path: '/reception',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -94,6 +142,21 @@ const OffersRoute = OffersRouteImport.update({
 const MaintenanceRoute = MaintenanceRouteImport.update({
   id: '/maintenance',
   path: '/maintenance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KitchenRoute = KitchenRouteImport.update({
+  id: '/kitchen',
+  path: '/kitchen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HousekeepingRoute = HousekeepingRouteImport.update({
+  id: '/housekeeping',
+  path: '/housekeeping',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -126,6 +189,16 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -136,29 +209,222 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuperIndexRoute = SuperIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SuperRoute,
+} as any)
+const ReceptionIndexRoute = ReceptionIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const KitchenIndexRoute = KitchenIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => KitchenRoute,
+} as any)
+const HousekeepingIndexRoute = HousekeepingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HousekeepingRoute,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AccountIndexRoute = AccountIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AccountRoute,
+} as any)
+const SuperSubscriptionsRoute = SuperSubscriptionsRouteImport.update({
+  id: '/subscriptions',
+  path: '/subscriptions',
+  getParentRoute: () => SuperRoute,
+} as any)
+const SuperSettingsRoute = SuperSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => SuperRoute,
+} as any)
+const SuperChainsRoute = SuperChainsRouteImport.update({
+  id: '/chains',
+  path: '/chains',
+  getParentRoute: () => SuperRoute,
+} as any)
+const SuperAuditRoute = SuperAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => SuperRoute,
+} as any)
+const SuperAnalyticsRoute = SuperAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => SuperRoute,
+} as any)
+const ReceptionWalkinRoute = ReceptionWalkinRouteImport.update({
+  id: '/walkin',
+  path: '/walkin',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const ReceptionInvoicesRoute = ReceptionInvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const ReceptionGuestsRoute = ReceptionGuestsRouteImport.update({
+  id: '/guests',
+  path: '/guests',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const ReceptionCheckoutRoute = ReceptionCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const ReceptionCheckinRoute = ReceptionCheckinRouteImport.update({
+  id: '/checkin',
+  path: '/checkin',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const KitchenMenuRoute = KitchenMenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => KitchenRoute,
+} as any)
+const HousekeepingMaintenanceRoute = HousekeepingMaintenanceRouteImport.update({
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => HousekeepingRoute,
+} as any)
+const AdminRoomsRoute = AdminRoomsRouteImport.update({
+  id: '/rooms',
+  path: '/rooms',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRestaurantRoute = AdminRestaurantRouteImport.update({
+  id: '/restaurant',
+  path: '/restaurant',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReservationsRoute = AdminReservationsRouteImport.update({
+  id: '/reservations',
+  path: '/reservations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPricingRoute = AdminPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInventoryRoute = AdminInventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEmployeesRoute = AdminEmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AccountRoomServiceRoute = AccountRoomServiceRouteImport.update({
+  id: '/room-service',
+  path: '/room-service',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountReviewsRoute = AccountReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountProfileRoute = AccountProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountInvoicesRoute = AccountInvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountChatRoute = AccountChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountBookingsRoute = AccountBookingsRouteImport.update({
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => AccountRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRouteWithChildren
+  '/admin': typeof AdminRouteWithChildren
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/conference': typeof ConferenceRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/housekeeping': typeof HousekeepingRouteWithChildren
+  '/kitchen': typeof KitchenRouteWithChildren
+  '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
   '/pool': typeof PoolRoute
   '/privacy': typeof PrivacyRoute
+  '/reception': typeof ReceptionRouteWithChildren
   '/restaurant': typeof RestaurantRoute
   '/rooms': typeof RoomsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spa': typeof SpaRoute
   '/suites': typeof SuitesRoute
+  '/super': typeof SuperRouteWithChildren
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
+  '/account/bookings': typeof AccountBookingsRoute
+  '/account/chat': typeof AccountChatRoute
+  '/account/invoices': typeof AccountInvoicesRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reviews': typeof AccountReviewsRoute
+  '/account/room-service': typeof AccountRoomServiceRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reservations': typeof AdminReservationsRoute
+  '/admin/restaurant': typeof AdminRestaurantRoute
+  '/admin/rooms': typeof AdminRoomsRoute
+  '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
+  '/kitchen/menu': typeof KitchenMenuRoute
+  '/reception/checkin': typeof ReceptionCheckinRoute
+  '/reception/checkout': typeof ReceptionCheckoutRoute
+  '/reception/guests': typeof ReceptionGuestsRoute
+  '/reception/invoices': typeof ReceptionInvoicesRoute
+  '/reception/walkin': typeof ReceptionWalkinRoute
+  '/super/analytics': typeof SuperAnalyticsRoute
+  '/super/audit': typeof SuperAuditRoute
+  '/super/chains': typeof SuperChainsRoute
+  '/super/settings': typeof SuperSettingsRoute
+  '/super/subscriptions': typeof SuperSubscriptionsRoute
+  '/account/': typeof AccountIndexRoute
+  '/admin/': typeof AdminIndexRoute
+  '/housekeeping/': typeof HousekeepingIndexRoute
+  '/kitchen/': typeof KitchenIndexRoute
+  '/reception/': typeof ReceptionIndexRoute
+  '/super/': typeof SuperIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -169,6 +435,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
@@ -182,55 +449,162 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
+  '/account/bookings': typeof AccountBookingsRoute
+  '/account/chat': typeof AccountChatRoute
+  '/account/invoices': typeof AccountInvoicesRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reviews': typeof AccountReviewsRoute
+  '/account/room-service': typeof AccountRoomServiceRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reservations': typeof AdminReservationsRoute
+  '/admin/restaurant': typeof AdminRestaurantRoute
+  '/admin/rooms': typeof AdminRoomsRoute
+  '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
+  '/kitchen/menu': typeof KitchenMenuRoute
+  '/reception/checkin': typeof ReceptionCheckinRoute
+  '/reception/checkout': typeof ReceptionCheckoutRoute
+  '/reception/guests': typeof ReceptionGuestsRoute
+  '/reception/invoices': typeof ReceptionInvoicesRoute
+  '/reception/walkin': typeof ReceptionWalkinRoute
+  '/super/analytics': typeof SuperAnalyticsRoute
+  '/super/audit': typeof SuperAuditRoute
+  '/super/chains': typeof SuperChainsRoute
+  '/super/settings': typeof SuperSettingsRoute
+  '/super/subscriptions': typeof SuperSubscriptionsRoute
+  '/account': typeof AccountIndexRoute
+  '/admin': typeof AdminIndexRoute
+  '/housekeeping': typeof HousekeepingIndexRoute
+  '/kitchen': typeof KitchenIndexRoute
+  '/reception': typeof ReceptionIndexRoute
+  '/super': typeof SuperIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/account': typeof AccountRouteWithChildren
+  '/admin': typeof AdminRouteWithChildren
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/conference': typeof ConferenceRoute
   '/contact': typeof ContactRoute
   '/faqs': typeof FaqsRoute
   '/gallery': typeof GalleryRoute
+  '/housekeeping': typeof HousekeepingRouteWithChildren
+  '/kitchen': typeof KitchenRouteWithChildren
+  '/login': typeof LoginRoute
   '/maintenance': typeof MaintenanceRoute
   '/offers': typeof OffersRoute
   '/packages': typeof PackagesRoute
   '/pool': typeof PoolRoute
   '/privacy': typeof PrivacyRoute
+  '/reception': typeof ReceptionRouteWithChildren
   '/restaurant': typeof RestaurantRoute
   '/rooms': typeof RoomsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spa': typeof SpaRoute
   '/suites': typeof SuitesRoute
+  '/super': typeof SuperRouteWithChildren
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
+  '/account/bookings': typeof AccountBookingsRoute
+  '/account/chat': typeof AccountChatRoute
+  '/account/invoices': typeof AccountInvoicesRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reviews': typeof AccountReviewsRoute
+  '/account/room-service': typeof AccountRoomServiceRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reservations': typeof AdminReservationsRoute
+  '/admin/restaurant': typeof AdminRestaurantRoute
+  '/admin/rooms': typeof AdminRoomsRoute
+  '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
+  '/kitchen/menu': typeof KitchenMenuRoute
+  '/reception/checkin': typeof ReceptionCheckinRoute
+  '/reception/checkout': typeof ReceptionCheckoutRoute
+  '/reception/guests': typeof ReceptionGuestsRoute
+  '/reception/invoices': typeof ReceptionInvoicesRoute
+  '/reception/walkin': typeof ReceptionWalkinRoute
+  '/super/analytics': typeof SuperAnalyticsRoute
+  '/super/audit': typeof SuperAuditRoute
+  '/super/chains': typeof SuperChainsRoute
+  '/super/settings': typeof SuperSettingsRoute
+  '/super/subscriptions': typeof SuperSubscriptionsRoute
+  '/account/': typeof AccountIndexRoute
+  '/admin/': typeof AdminIndexRoute
+  '/housekeeping/': typeof HousekeepingIndexRoute
+  '/kitchen/': typeof KitchenIndexRoute
+  '/reception/': typeof ReceptionIndexRoute
+  '/super/': typeof SuperIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/account'
+    | '/admin'
     | '/blog'
     | '/careers'
     | '/conference'
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/housekeeping'
+    | '/kitchen'
+    | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
     | '/pool'
     | '/privacy'
+    | '/reception'
     | '/restaurant'
     | '/rooms'
     | '/sitemap.xml'
     | '/spa'
     | '/suites'
+    | '/super'
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
+    | '/account/bookings'
+    | '/account/chat'
+    | '/account/invoices'
+    | '/account/profile'
+    | '/account/reviews'
+    | '/account/room-service'
+    | '/admin/employees'
+    | '/admin/inventory'
+    | '/admin/pricing'
+    | '/admin/reports'
+    | '/admin/reservations'
+    | '/admin/restaurant'
+    | '/admin/rooms'
+    | '/housekeeping/maintenance'
+    | '/kitchen/menu'
+    | '/reception/checkin'
+    | '/reception/checkout'
+    | '/reception/guests'
+    | '/reception/invoices'
+    | '/reception/walkin'
+    | '/super/analytics'
+    | '/super/audit'
+    | '/super/chains'
+    | '/super/settings'
+    | '/super/subscriptions'
+    | '/account/'
+    | '/admin/'
+    | '/housekeeping/'
+    | '/kitchen/'
+    | '/reception/'
+    | '/super/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -241,6 +615,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
@@ -254,50 +629,126 @@ export interface FileRouteTypes {
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
+    | '/account/bookings'
+    | '/account/chat'
+    | '/account/invoices'
+    | '/account/profile'
+    | '/account/reviews'
+    | '/account/room-service'
+    | '/admin/employees'
+    | '/admin/inventory'
+    | '/admin/pricing'
+    | '/admin/reports'
+    | '/admin/reservations'
+    | '/admin/restaurant'
+    | '/admin/rooms'
+    | '/housekeeping/maintenance'
+    | '/kitchen/menu'
+    | '/reception/checkin'
+    | '/reception/checkout'
+    | '/reception/guests'
+    | '/reception/invoices'
+    | '/reception/walkin'
+    | '/super/analytics'
+    | '/super/audit'
+    | '/super/chains'
+    | '/super/settings'
+    | '/super/subscriptions'
+    | '/account'
+    | '/admin'
+    | '/housekeeping'
+    | '/kitchen'
+    | '/reception'
+    | '/super'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/account'
+    | '/admin'
     | '/blog'
     | '/careers'
     | '/conference'
     | '/contact'
     | '/faqs'
     | '/gallery'
+    | '/housekeeping'
+    | '/kitchen'
+    | '/login'
     | '/maintenance'
     | '/offers'
     | '/packages'
     | '/pool'
     | '/privacy'
+    | '/reception'
     | '/restaurant'
     | '/rooms'
     | '/sitemap.xml'
     | '/spa'
     | '/suites'
+    | '/super'
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
+    | '/account/bookings'
+    | '/account/chat'
+    | '/account/invoices'
+    | '/account/profile'
+    | '/account/reviews'
+    | '/account/room-service'
+    | '/admin/employees'
+    | '/admin/inventory'
+    | '/admin/pricing'
+    | '/admin/reports'
+    | '/admin/reservations'
+    | '/admin/restaurant'
+    | '/admin/rooms'
+    | '/housekeeping/maintenance'
+    | '/kitchen/menu'
+    | '/reception/checkin'
+    | '/reception/checkout'
+    | '/reception/guests'
+    | '/reception/invoices'
+    | '/reception/walkin'
+    | '/super/analytics'
+    | '/super/audit'
+    | '/super/chains'
+    | '/super/settings'
+    | '/super/subscriptions'
+    | '/account/'
+    | '/admin/'
+    | '/housekeeping/'
+    | '/kitchen/'
+    | '/reception/'
+    | '/super/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccountRoute: typeof AccountRouteWithChildren
+  AdminRoute: typeof AdminRouteWithChildren
   BlogRoute: typeof BlogRoute
   CareersRoute: typeof CareersRoute
   ConferenceRoute: typeof ConferenceRoute
   ContactRoute: typeof ContactRoute
   FaqsRoute: typeof FaqsRoute
   GalleryRoute: typeof GalleryRoute
+  HousekeepingRoute: typeof HousekeepingRouteWithChildren
+  KitchenRoute: typeof KitchenRouteWithChildren
+  LoginRoute: typeof LoginRoute
   MaintenanceRoute: typeof MaintenanceRoute
   OffersRoute: typeof OffersRoute
   PackagesRoute: typeof PackagesRoute
   PoolRoute: typeof PoolRoute
   PrivacyRoute: typeof PrivacyRoute
+  ReceptionRoute: typeof ReceptionRouteWithChildren
   RestaurantRoute: typeof RestaurantRoute
   RoomsRoute: typeof RoomsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpaRoute: typeof SpaRoute
   SuitesRoute: typeof SuitesRoute
+  SuperRoute: typeof SuperRouteWithChildren
   TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
   WeddingEventsRoute: typeof WeddingEventsRoute
@@ -324,6 +775,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/super': {
+      id: '/super'
+      path: '/super'
+      fullPath: '/super'
+      preLoaderRoute: typeof SuperRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/suites': {
@@ -361,6 +819,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RestaurantRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reception': {
+      id: '/reception'
+      path: '/reception'
+      fullPath: '/reception'
+      preLoaderRoute: typeof ReceptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -394,6 +859,27 @@ declare module '@tanstack/react-router' {
       path: '/maintenance'
       fullPath: '/maintenance'
       preLoaderRoute: typeof MaintenanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kitchen': {
+      id: '/kitchen'
+      path: '/kitchen'
+      fullPath: '/kitchen'
+      preLoaderRoute: typeof KitchenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/housekeeping': {
+      id: '/housekeeping'
+      path: '/housekeeping'
+      fullPath: '/housekeeping'
+      preLoaderRoute: typeof HousekeepingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -438,6 +924,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -452,28 +952,368 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/super/': {
+      id: '/super/'
+      path: '/'
+      fullPath: '/super/'
+      preLoaderRoute: typeof SuperIndexRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/reception/': {
+      id: '/reception/'
+      path: '/'
+      fullPath: '/reception/'
+      preLoaderRoute: typeof ReceptionIndexRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/kitchen/': {
+      id: '/kitchen/'
+      path: '/'
+      fullPath: '/kitchen/'
+      preLoaderRoute: typeof KitchenIndexRouteImport
+      parentRoute: typeof KitchenRoute
+    }
+    '/housekeeping/': {
+      id: '/housekeeping/'
+      path: '/'
+      fullPath: '/housekeeping/'
+      preLoaderRoute: typeof HousekeepingIndexRouteImport
+      parentRoute: typeof HousekeepingRoute
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/account/': {
+      id: '/account/'
+      path: '/'
+      fullPath: '/account/'
+      preLoaderRoute: typeof AccountIndexRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/super/subscriptions': {
+      id: '/super/subscriptions'
+      path: '/subscriptions'
+      fullPath: '/super/subscriptions'
+      preLoaderRoute: typeof SuperSubscriptionsRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/super/settings': {
+      id: '/super/settings'
+      path: '/settings'
+      fullPath: '/super/settings'
+      preLoaderRoute: typeof SuperSettingsRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/super/chains': {
+      id: '/super/chains'
+      path: '/chains'
+      fullPath: '/super/chains'
+      preLoaderRoute: typeof SuperChainsRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/super/audit': {
+      id: '/super/audit'
+      path: '/audit'
+      fullPath: '/super/audit'
+      preLoaderRoute: typeof SuperAuditRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/super/analytics': {
+      id: '/super/analytics'
+      path: '/analytics'
+      fullPath: '/super/analytics'
+      preLoaderRoute: typeof SuperAnalyticsRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/reception/walkin': {
+      id: '/reception/walkin'
+      path: '/walkin'
+      fullPath: '/reception/walkin'
+      preLoaderRoute: typeof ReceptionWalkinRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/reception/invoices': {
+      id: '/reception/invoices'
+      path: '/invoices'
+      fullPath: '/reception/invoices'
+      preLoaderRoute: typeof ReceptionInvoicesRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/reception/guests': {
+      id: '/reception/guests'
+      path: '/guests'
+      fullPath: '/reception/guests'
+      preLoaderRoute: typeof ReceptionGuestsRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/reception/checkout': {
+      id: '/reception/checkout'
+      path: '/checkout'
+      fullPath: '/reception/checkout'
+      preLoaderRoute: typeof ReceptionCheckoutRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/reception/checkin': {
+      id: '/reception/checkin'
+      path: '/checkin'
+      fullPath: '/reception/checkin'
+      preLoaderRoute: typeof ReceptionCheckinRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/kitchen/menu': {
+      id: '/kitchen/menu'
+      path: '/menu'
+      fullPath: '/kitchen/menu'
+      preLoaderRoute: typeof KitchenMenuRouteImport
+      parentRoute: typeof KitchenRoute
+    }
+    '/housekeeping/maintenance': {
+      id: '/housekeeping/maintenance'
+      path: '/maintenance'
+      fullPath: '/housekeeping/maintenance'
+      preLoaderRoute: typeof HousekeepingMaintenanceRouteImport
+      parentRoute: typeof HousekeepingRoute
+    }
+    '/admin/rooms': {
+      id: '/admin/rooms'
+      path: '/rooms'
+      fullPath: '/admin/rooms'
+      preLoaderRoute: typeof AdminRoomsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/restaurant': {
+      id: '/admin/restaurant'
+      path: '/restaurant'
+      fullPath: '/admin/restaurant'
+      preLoaderRoute: typeof AdminRestaurantRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reservations': {
+      id: '/admin/reservations'
+      path: '/reservations'
+      fullPath: '/admin/reservations'
+      preLoaderRoute: typeof AdminReservationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pricing': {
+      id: '/admin/pricing'
+      path: '/pricing'
+      fullPath: '/admin/pricing'
+      preLoaderRoute: typeof AdminPricingRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/inventory': {
+      id: '/admin/inventory'
+      path: '/inventory'
+      fullPath: '/admin/inventory'
+      preLoaderRoute: typeof AdminInventoryRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/employees': {
+      id: '/admin/employees'
+      path: '/employees'
+      fullPath: '/admin/employees'
+      preLoaderRoute: typeof AdminEmployeesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/account/room-service': {
+      id: '/account/room-service'
+      path: '/room-service'
+      fullPath: '/account/room-service'
+      preLoaderRoute: typeof AccountRoomServiceRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/reviews': {
+      id: '/account/reviews'
+      path: '/reviews'
+      fullPath: '/account/reviews'
+      preLoaderRoute: typeof AccountReviewsRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/profile': {
+      id: '/account/profile'
+      path: '/profile'
+      fullPath: '/account/profile'
+      preLoaderRoute: typeof AccountProfileRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/invoices': {
+      id: '/account/invoices'
+      path: '/invoices'
+      fullPath: '/account/invoices'
+      preLoaderRoute: typeof AccountInvoicesRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/chat': {
+      id: '/account/chat'
+      path: '/chat'
+      fullPath: '/account/chat'
+      preLoaderRoute: typeof AccountChatRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/bookings': {
+      id: '/account/bookings'
+      path: '/bookings'
+      fullPath: '/account/bookings'
+      preLoaderRoute: typeof AccountBookingsRouteImport
+      parentRoute: typeof AccountRoute
+    }
   }
 }
+
+interface AccountRouteChildren {
+  AccountBookingsRoute: typeof AccountBookingsRoute
+  AccountChatRoute: typeof AccountChatRoute
+  AccountInvoicesRoute: typeof AccountInvoicesRoute
+  AccountProfileRoute: typeof AccountProfileRoute
+  AccountReviewsRoute: typeof AccountReviewsRoute
+  AccountRoomServiceRoute: typeof AccountRoomServiceRoute
+  AccountIndexRoute: typeof AccountIndexRoute
+}
+
+const AccountRouteChildren: AccountRouteChildren = {
+  AccountBookingsRoute: AccountBookingsRoute,
+  AccountChatRoute: AccountChatRoute,
+  AccountInvoicesRoute: AccountInvoicesRoute,
+  AccountProfileRoute: AccountProfileRoute,
+  AccountReviewsRoute: AccountReviewsRoute,
+  AccountRoomServiceRoute: AccountRoomServiceRoute,
+  AccountIndexRoute: AccountIndexRoute,
+}
+
+const AccountRouteWithChildren =
+  AccountRoute._addFileChildren(AccountRouteChildren)
+
+interface AdminRouteChildren {
+  AdminEmployeesRoute: typeof AdminEmployeesRoute
+  AdminInventoryRoute: typeof AdminInventoryRoute
+  AdminPricingRoute: typeof AdminPricingRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminReservationsRoute: typeof AdminReservationsRoute
+  AdminRestaurantRoute: typeof AdminRestaurantRoute
+  AdminRoomsRoute: typeof AdminRoomsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminEmployeesRoute: AdminEmployeesRoute,
+  AdminInventoryRoute: AdminInventoryRoute,
+  AdminPricingRoute: AdminPricingRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminReservationsRoute: AdminReservationsRoute,
+  AdminRestaurantRoute: AdminRestaurantRoute,
+  AdminRoomsRoute: AdminRoomsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface HousekeepingRouteChildren {
+  HousekeepingMaintenanceRoute: typeof HousekeepingMaintenanceRoute
+  HousekeepingIndexRoute: typeof HousekeepingIndexRoute
+}
+
+const HousekeepingRouteChildren: HousekeepingRouteChildren = {
+  HousekeepingMaintenanceRoute: HousekeepingMaintenanceRoute,
+  HousekeepingIndexRoute: HousekeepingIndexRoute,
+}
+
+const HousekeepingRouteWithChildren = HousekeepingRoute._addFileChildren(
+  HousekeepingRouteChildren,
+)
+
+interface KitchenRouteChildren {
+  KitchenMenuRoute: typeof KitchenMenuRoute
+  KitchenIndexRoute: typeof KitchenIndexRoute
+}
+
+const KitchenRouteChildren: KitchenRouteChildren = {
+  KitchenMenuRoute: KitchenMenuRoute,
+  KitchenIndexRoute: KitchenIndexRoute,
+}
+
+const KitchenRouteWithChildren =
+  KitchenRoute._addFileChildren(KitchenRouteChildren)
+
+interface ReceptionRouteChildren {
+  ReceptionCheckinRoute: typeof ReceptionCheckinRoute
+  ReceptionCheckoutRoute: typeof ReceptionCheckoutRoute
+  ReceptionGuestsRoute: typeof ReceptionGuestsRoute
+  ReceptionInvoicesRoute: typeof ReceptionInvoicesRoute
+  ReceptionWalkinRoute: typeof ReceptionWalkinRoute
+  ReceptionIndexRoute: typeof ReceptionIndexRoute
+}
+
+const ReceptionRouteChildren: ReceptionRouteChildren = {
+  ReceptionCheckinRoute: ReceptionCheckinRoute,
+  ReceptionCheckoutRoute: ReceptionCheckoutRoute,
+  ReceptionGuestsRoute: ReceptionGuestsRoute,
+  ReceptionInvoicesRoute: ReceptionInvoicesRoute,
+  ReceptionWalkinRoute: ReceptionWalkinRoute,
+  ReceptionIndexRoute: ReceptionIndexRoute,
+}
+
+const ReceptionRouteWithChildren = ReceptionRoute._addFileChildren(
+  ReceptionRouteChildren,
+)
+
+interface SuperRouteChildren {
+  SuperAnalyticsRoute: typeof SuperAnalyticsRoute
+  SuperAuditRoute: typeof SuperAuditRoute
+  SuperChainsRoute: typeof SuperChainsRoute
+  SuperSettingsRoute: typeof SuperSettingsRoute
+  SuperSubscriptionsRoute: typeof SuperSubscriptionsRoute
+  SuperIndexRoute: typeof SuperIndexRoute
+}
+
+const SuperRouteChildren: SuperRouteChildren = {
+  SuperAnalyticsRoute: SuperAnalyticsRoute,
+  SuperAuditRoute: SuperAuditRoute,
+  SuperChainsRoute: SuperChainsRoute,
+  SuperSettingsRoute: SuperSettingsRoute,
+  SuperSubscriptionsRoute: SuperSubscriptionsRoute,
+  SuperIndexRoute: SuperIndexRoute,
+}
+
+const SuperRouteWithChildren = SuperRoute._addFileChildren(SuperRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccountRoute: AccountRouteWithChildren,
+  AdminRoute: AdminRouteWithChildren,
   BlogRoute: BlogRoute,
   CareersRoute: CareersRoute,
   ConferenceRoute: ConferenceRoute,
   ContactRoute: ContactRoute,
   FaqsRoute: FaqsRoute,
   GalleryRoute: GalleryRoute,
+  HousekeepingRoute: HousekeepingRouteWithChildren,
+  KitchenRoute: KitchenRouteWithChildren,
+  LoginRoute: LoginRoute,
   MaintenanceRoute: MaintenanceRoute,
   OffersRoute: OffersRoute,
   PackagesRoute: PackagesRoute,
   PoolRoute: PoolRoute,
   PrivacyRoute: PrivacyRoute,
+  ReceptionRoute: ReceptionRouteWithChildren,
   RestaurantRoute: RestaurantRoute,
   RoomsRoute: RoomsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpaRoute: SpaRoute,
   SuitesRoute: SuitesRoute,
+  SuperRoute: SuperRouteWithChildren,
   TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,
   WeddingEventsRoute: WeddingEventsRoute,
@@ -481,13 +1321,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

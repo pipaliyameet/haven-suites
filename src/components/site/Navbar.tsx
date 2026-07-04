@@ -58,6 +58,7 @@ export function SiteNavbar() {
           <a href={`tel:${SITE.phone}`} className="flex items-center gap-2 text-xs opacity-80 hover:opacity-100">
             <Phone size={14} /> <span className="tracking-wider">{SITE.phone}</span>
           </a>
+          <Link to="/login" className="text-[0.7rem] uppercase tracking-[0.22em] font-medium opacity-80 hover:opacity-100 hover:text-[color:var(--gold)]">Sign in</Link>
           <Link to="/rooms" className="btn-gold">Reserve</Link>
         </div>
 
@@ -101,6 +102,7 @@ export function SiteNavbar() {
               <div className="mt-6 flex flex-col gap-3">
                 <Link to="/rooms" className="btn-gold justify-center">Reserve a stay</Link>
                 <a href={`tel:${SITE.phone}`} className="btn-outline-light justify-center">Call the concierge</a>
+                <Link to="/login" className="text-center text-xs uppercase tracking-[0.22em] opacity-80">Sign in / Staff portal</Link>
               </div>
             </motion.nav>
           </motion.div>
