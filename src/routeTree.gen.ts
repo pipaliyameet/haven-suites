@@ -37,7 +37,13 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ReceptionIndexRouteImport } from './routes/reception.index'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
+import { Route as ReceptionWalkinRouteImport } from './routes/reception.walkin'
+import { Route as ReceptionInvoicesRouteImport } from './routes/reception.invoices'
+import { Route as ReceptionGuestsRouteImport } from './routes/reception.guests'
+import { Route as ReceptionCheckoutRouteImport } from './routes/reception.checkout'
+import { Route as ReceptionCheckinRouteImport } from './routes/reception.checkin'
 import { Route as AccountRoomServiceRouteImport } from './routes/account.room-service'
 import { Route as AccountReviewsRouteImport } from './routes/account.reviews'
 import { Route as AccountProfileRouteImport } from './routes/account.profile'
@@ -185,10 +191,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReceptionIndexRoute = ReceptionIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ReceptionRoute,
+} as any)
 const AccountIndexRoute = AccountIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AccountRoute,
+} as any)
+const ReceptionWalkinRoute = ReceptionWalkinRouteImport.update({
+  id: '/walkin',
+  path: '/walkin',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const ReceptionInvoicesRoute = ReceptionInvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const ReceptionGuestsRoute = ReceptionGuestsRouteImport.update({
+  id: '/guests',
+  path: '/guests',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const ReceptionCheckoutRoute = ReceptionCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => ReceptionRoute,
+} as any)
+const ReceptionCheckinRoute = ReceptionCheckinRouteImport.update({
+  id: '/checkin',
+  path: '/checkin',
+  getParentRoute: () => ReceptionRoute,
 } as any)
 const AccountRoomServiceRoute = AccountRoomServiceRouteImport.update({
   id: '/room-service',
@@ -240,7 +276,7 @@ export interface FileRoutesByFullPath {
   '/packages': typeof PackagesRoute
   '/pool': typeof PoolRoute
   '/privacy': typeof PrivacyRoute
-  '/reception': typeof ReceptionRoute
+  '/reception': typeof ReceptionRouteWithChildren
   '/restaurant': typeof RestaurantRoute
   '/rooms': typeof RoomsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -256,7 +292,13 @@ export interface FileRoutesByFullPath {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/reception/checkin': typeof ReceptionCheckinRoute
+  '/reception/checkout': typeof ReceptionCheckoutRoute
+  '/reception/guests': typeof ReceptionGuestsRoute
+  '/reception/invoices': typeof ReceptionInvoicesRoute
+  '/reception/walkin': typeof ReceptionWalkinRoute
   '/account/': typeof AccountIndexRoute
+  '/reception/': typeof ReceptionIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -276,7 +318,6 @@ export interface FileRoutesByTo {
   '/packages': typeof PackagesRoute
   '/pool': typeof PoolRoute
   '/privacy': typeof PrivacyRoute
-  '/reception': typeof ReceptionRoute
   '/restaurant': typeof RestaurantRoute
   '/rooms': typeof RoomsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -292,7 +333,13 @@ export interface FileRoutesByTo {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/reception/checkin': typeof ReceptionCheckinRoute
+  '/reception/checkout': typeof ReceptionCheckoutRoute
+  '/reception/guests': typeof ReceptionGuestsRoute
+  '/reception/invoices': typeof ReceptionInvoicesRoute
+  '/reception/walkin': typeof ReceptionWalkinRoute
   '/account': typeof AccountIndexRoute
+  '/reception': typeof ReceptionIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -314,7 +361,7 @@ export interface FileRoutesById {
   '/packages': typeof PackagesRoute
   '/pool': typeof PoolRoute
   '/privacy': typeof PrivacyRoute
-  '/reception': typeof ReceptionRoute
+  '/reception': typeof ReceptionRouteWithChildren
   '/restaurant': typeof RestaurantRoute
   '/rooms': typeof RoomsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -330,7 +377,13 @@ export interface FileRoutesById {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/reception/checkin': typeof ReceptionCheckinRoute
+  '/reception/checkout': typeof ReceptionCheckoutRoute
+  '/reception/guests': typeof ReceptionGuestsRoute
+  '/reception/invoices': typeof ReceptionInvoicesRoute
+  '/reception/walkin': typeof ReceptionWalkinRoute
   '/account/': typeof AccountIndexRoute
+  '/reception/': typeof ReceptionIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -369,7 +422,13 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/reception/checkin'
+    | '/reception/checkout'
+    | '/reception/guests'
+    | '/reception/invoices'
+    | '/reception/walkin'
     | '/account/'
+    | '/reception/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -389,7 +448,6 @@ export interface FileRouteTypes {
     | '/packages'
     | '/pool'
     | '/privacy'
-    | '/reception'
     | '/restaurant'
     | '/rooms'
     | '/sitemap.xml'
@@ -405,7 +463,13 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/reception/checkin'
+    | '/reception/checkout'
+    | '/reception/guests'
+    | '/reception/invoices'
+    | '/reception/walkin'
     | '/account'
+    | '/reception'
   id:
     | '__root__'
     | '/'
@@ -442,7 +506,13 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/reception/checkin'
+    | '/reception/checkout'
+    | '/reception/guests'
+    | '/reception/invoices'
+    | '/reception/walkin'
     | '/account/'
+    | '/reception/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -464,7 +534,7 @@ export interface RootRouteChildren {
   PackagesRoute: typeof PackagesRoute
   PoolRoute: typeof PoolRoute
   PrivacyRoute: typeof PrivacyRoute
-  ReceptionRoute: typeof ReceptionRoute
+  ReceptionRoute: typeof ReceptionRouteWithChildren
   RestaurantRoute: typeof RestaurantRoute
   RoomsRoute: typeof RoomsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -674,12 +744,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reception/': {
+      id: '/reception/'
+      path: '/'
+      fullPath: '/reception/'
+      preLoaderRoute: typeof ReceptionIndexRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
     '/account/': {
       id: '/account/'
       path: '/'
       fullPath: '/account/'
       preLoaderRoute: typeof AccountIndexRouteImport
       parentRoute: typeof AccountRoute
+    }
+    '/reception/walkin': {
+      id: '/reception/walkin'
+      path: '/walkin'
+      fullPath: '/reception/walkin'
+      preLoaderRoute: typeof ReceptionWalkinRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/reception/invoices': {
+      id: '/reception/invoices'
+      path: '/invoices'
+      fullPath: '/reception/invoices'
+      preLoaderRoute: typeof ReceptionInvoicesRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/reception/guests': {
+      id: '/reception/guests'
+      path: '/guests'
+      fullPath: '/reception/guests'
+      preLoaderRoute: typeof ReceptionGuestsRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/reception/checkout': {
+      id: '/reception/checkout'
+      path: '/checkout'
+      fullPath: '/reception/checkout'
+      preLoaderRoute: typeof ReceptionCheckoutRouteImport
+      parentRoute: typeof ReceptionRoute
+    }
+    '/reception/checkin': {
+      id: '/reception/checkin'
+      path: '/checkin'
+      fullPath: '/reception/checkin'
+      preLoaderRoute: typeof ReceptionCheckinRouteImport
+      parentRoute: typeof ReceptionRoute
     }
     '/account/room-service': {
       id: '/account/room-service'
@@ -749,6 +861,28 @@ const AccountRouteChildren: AccountRouteChildren = {
 const AccountRouteWithChildren =
   AccountRoute._addFileChildren(AccountRouteChildren)
 
+interface ReceptionRouteChildren {
+  ReceptionCheckinRoute: typeof ReceptionCheckinRoute
+  ReceptionCheckoutRoute: typeof ReceptionCheckoutRoute
+  ReceptionGuestsRoute: typeof ReceptionGuestsRoute
+  ReceptionInvoicesRoute: typeof ReceptionInvoicesRoute
+  ReceptionWalkinRoute: typeof ReceptionWalkinRoute
+  ReceptionIndexRoute: typeof ReceptionIndexRoute
+}
+
+const ReceptionRouteChildren: ReceptionRouteChildren = {
+  ReceptionCheckinRoute: ReceptionCheckinRoute,
+  ReceptionCheckoutRoute: ReceptionCheckoutRoute,
+  ReceptionGuestsRoute: ReceptionGuestsRoute,
+  ReceptionInvoicesRoute: ReceptionInvoicesRoute,
+  ReceptionWalkinRoute: ReceptionWalkinRoute,
+  ReceptionIndexRoute: ReceptionIndexRoute,
+}
+
+const ReceptionRouteWithChildren = ReceptionRoute._addFileChildren(
+  ReceptionRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -768,7 +902,7 @@ const rootRouteChildren: RootRouteChildren = {
   PackagesRoute: PackagesRoute,
   PoolRoute: PoolRoute,
   PrivacyRoute: PrivacyRoute,
-  ReceptionRoute: ReceptionRoute,
+  ReceptionRoute: ReceptionRouteWithChildren,
   RestaurantRoute: RestaurantRoute,
   RoomsRoute: RoomsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
