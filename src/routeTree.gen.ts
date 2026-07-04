@@ -37,11 +37,17 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SuperIndexRouteImport } from './routes/super.index'
 import { Route as ReceptionIndexRouteImport } from './routes/reception.index'
 import { Route as KitchenIndexRouteImport } from './routes/kitchen.index'
 import { Route as HousekeepingIndexRouteImport } from './routes/housekeeping.index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
+import { Route as SuperSubscriptionsRouteImport } from './routes/super.subscriptions'
+import { Route as SuperSettingsRouteImport } from './routes/super.settings'
+import { Route as SuperChainsRouteImport } from './routes/super.chains'
+import { Route as SuperAuditRouteImport } from './routes/super.audit'
+import { Route as SuperAnalyticsRouteImport } from './routes/super.analytics'
 import { Route as ReceptionWalkinRouteImport } from './routes/reception.walkin'
 import { Route as ReceptionInvoicesRouteImport } from './routes/reception.invoices'
 import { Route as ReceptionGuestsRouteImport } from './routes/reception.guests'
@@ -203,6 +209,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuperIndexRoute = SuperIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SuperRoute,
+} as any)
 const ReceptionIndexRoute = ReceptionIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -227,6 +238,31 @@ const AccountIndexRoute = AccountIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AccountRoute,
+} as any)
+const SuperSubscriptionsRoute = SuperSubscriptionsRouteImport.update({
+  id: '/subscriptions',
+  path: '/subscriptions',
+  getParentRoute: () => SuperRoute,
+} as any)
+const SuperSettingsRoute = SuperSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => SuperRoute,
+} as any)
+const SuperChainsRoute = SuperChainsRouteImport.update({
+  id: '/chains',
+  path: '/chains',
+  getParentRoute: () => SuperRoute,
+} as any)
+const SuperAuditRoute = SuperAuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => SuperRoute,
+} as any)
+const SuperAnalyticsRoute = SuperAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => SuperRoute,
 } as any)
 const ReceptionWalkinRoute = ReceptionWalkinRouteImport.update({
   id: '/walkin',
@@ -354,7 +390,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spa': typeof SpaRoute
   '/suites': typeof SuitesRoute
-  '/super': typeof SuperRoute
+  '/super': typeof SuperRouteWithChildren
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
@@ -378,11 +414,17 @@ export interface FileRoutesByFullPath {
   '/reception/guests': typeof ReceptionGuestsRoute
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
+  '/super/analytics': typeof SuperAnalyticsRoute
+  '/super/audit': typeof SuperAuditRoute
+  '/super/chains': typeof SuperChainsRoute
+  '/super/settings': typeof SuperSettingsRoute
+  '/super/subscriptions': typeof SuperSubscriptionsRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/housekeeping/': typeof HousekeepingIndexRoute
   '/kitchen/': typeof KitchenIndexRoute
   '/reception/': typeof ReceptionIndexRoute
+  '/super/': typeof SuperIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -404,7 +446,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spa': typeof SpaRoute
   '/suites': typeof SuitesRoute
-  '/super': typeof SuperRoute
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
@@ -428,11 +469,17 @@ export interface FileRoutesByTo {
   '/reception/guests': typeof ReceptionGuestsRoute
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
+  '/super/analytics': typeof SuperAnalyticsRoute
+  '/super/audit': typeof SuperAuditRoute
+  '/super/chains': typeof SuperChainsRoute
+  '/super/settings': typeof SuperSettingsRoute
+  '/super/subscriptions': typeof SuperSubscriptionsRoute
   '/account': typeof AccountIndexRoute
   '/admin': typeof AdminIndexRoute
   '/housekeeping': typeof HousekeepingIndexRoute
   '/kitchen': typeof KitchenIndexRoute
   '/reception': typeof ReceptionIndexRoute
+  '/super': typeof SuperIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -460,7 +507,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spa': typeof SpaRoute
   '/suites': typeof SuitesRoute
-  '/super': typeof SuperRoute
+  '/super': typeof SuperRouteWithChildren
   '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/wedding-events': typeof WeddingEventsRoute
@@ -484,11 +531,17 @@ export interface FileRoutesById {
   '/reception/guests': typeof ReceptionGuestsRoute
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
+  '/super/analytics': typeof SuperAnalyticsRoute
+  '/super/audit': typeof SuperAuditRoute
+  '/super/chains': typeof SuperChainsRoute
+  '/super/settings': typeof SuperSettingsRoute
+  '/super/subscriptions': typeof SuperSubscriptionsRoute
   '/account/': typeof AccountIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/housekeeping/': typeof HousekeepingIndexRoute
   '/kitchen/': typeof KitchenIndexRoute
   '/reception/': typeof ReceptionIndexRoute
+  '/super/': typeof SuperIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -541,11 +594,17 @@ export interface FileRouteTypes {
     | '/reception/guests'
     | '/reception/invoices'
     | '/reception/walkin'
+    | '/super/analytics'
+    | '/super/audit'
+    | '/super/chains'
+    | '/super/settings'
+    | '/super/subscriptions'
     | '/account/'
     | '/admin/'
     | '/housekeeping/'
     | '/kitchen/'
     | '/reception/'
+    | '/super/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -567,7 +626,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/spa'
     | '/suites'
-    | '/super'
     | '/terms'
     | '/testimonials'
     | '/wedding-events'
@@ -591,11 +649,17 @@ export interface FileRouteTypes {
     | '/reception/guests'
     | '/reception/invoices'
     | '/reception/walkin'
+    | '/super/analytics'
+    | '/super/audit'
+    | '/super/chains'
+    | '/super/settings'
+    | '/super/subscriptions'
     | '/account'
     | '/admin'
     | '/housekeeping'
     | '/kitchen'
     | '/reception'
+    | '/super'
   id:
     | '__root__'
     | '/'
@@ -646,11 +710,17 @@ export interface FileRouteTypes {
     | '/reception/guests'
     | '/reception/invoices'
     | '/reception/walkin'
+    | '/super/analytics'
+    | '/super/audit'
+    | '/super/chains'
+    | '/super/settings'
+    | '/super/subscriptions'
     | '/account/'
     | '/admin/'
     | '/housekeeping/'
     | '/kitchen/'
     | '/reception/'
+    | '/super/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -678,7 +748,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpaRoute: typeof SpaRoute
   SuitesRoute: typeof SuitesRoute
-  SuperRoute: typeof SuperRoute
+  SuperRoute: typeof SuperRouteWithChildren
   TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
   WeddingEventsRoute: typeof WeddingEventsRoute
@@ -882,6 +952,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/super/': {
+      id: '/super/'
+      path: '/'
+      fullPath: '/super/'
+      preLoaderRoute: typeof SuperIndexRouteImport
+      parentRoute: typeof SuperRoute
+    }
     '/reception/': {
       id: '/reception/'
       path: '/'
@@ -916,6 +993,41 @@ declare module '@tanstack/react-router' {
       fullPath: '/account/'
       preLoaderRoute: typeof AccountIndexRouteImport
       parentRoute: typeof AccountRoute
+    }
+    '/super/subscriptions': {
+      id: '/super/subscriptions'
+      path: '/subscriptions'
+      fullPath: '/super/subscriptions'
+      preLoaderRoute: typeof SuperSubscriptionsRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/super/settings': {
+      id: '/super/settings'
+      path: '/settings'
+      fullPath: '/super/settings'
+      preLoaderRoute: typeof SuperSettingsRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/super/chains': {
+      id: '/super/chains'
+      path: '/chains'
+      fullPath: '/super/chains'
+      preLoaderRoute: typeof SuperChainsRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/super/audit': {
+      id: '/super/audit'
+      path: '/audit'
+      fullPath: '/super/audit'
+      preLoaderRoute: typeof SuperAuditRouteImport
+      parentRoute: typeof SuperRoute
+    }
+    '/super/analytics': {
+      id: '/super/analytics'
+      path: '/analytics'
+      fullPath: '/super/analytics'
+      preLoaderRoute: typeof SuperAnalyticsRouteImport
+      parentRoute: typeof SuperRoute
     }
     '/reception/walkin': {
       id: '/reception/walkin'
@@ -1156,6 +1268,26 @@ const ReceptionRouteWithChildren = ReceptionRoute._addFileChildren(
   ReceptionRouteChildren,
 )
 
+interface SuperRouteChildren {
+  SuperAnalyticsRoute: typeof SuperAnalyticsRoute
+  SuperAuditRoute: typeof SuperAuditRoute
+  SuperChainsRoute: typeof SuperChainsRoute
+  SuperSettingsRoute: typeof SuperSettingsRoute
+  SuperSubscriptionsRoute: typeof SuperSubscriptionsRoute
+  SuperIndexRoute: typeof SuperIndexRoute
+}
+
+const SuperRouteChildren: SuperRouteChildren = {
+  SuperAnalyticsRoute: SuperAnalyticsRoute,
+  SuperAuditRoute: SuperAuditRoute,
+  SuperChainsRoute: SuperChainsRoute,
+  SuperSettingsRoute: SuperSettingsRoute,
+  SuperSubscriptionsRoute: SuperSubscriptionsRoute,
+  SuperIndexRoute: SuperIndexRoute,
+}
+
+const SuperRouteWithChildren = SuperRoute._addFileChildren(SuperRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -1181,7 +1313,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpaRoute: SpaRoute,
   SuitesRoute: SuitesRoute,
-  SuperRoute: SuperRoute,
+  SuperRoute: SuperRouteWithChildren,
   TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,
   WeddingEventsRoute: WeddingEventsRoute,
