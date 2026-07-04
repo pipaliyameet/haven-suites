@@ -40,6 +40,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ReceptionIndexRouteImport } from './routes/reception.index'
 import { Route as KitchenIndexRouteImport } from './routes/kitchen.index'
 import { Route as HousekeepingIndexRouteImport } from './routes/housekeeping.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
 import { Route as ReceptionWalkinRouteImport } from './routes/reception.walkin'
 import { Route as ReceptionInvoicesRouteImport } from './routes/reception.invoices'
@@ -48,6 +49,13 @@ import { Route as ReceptionCheckoutRouteImport } from './routes/reception.checko
 import { Route as ReceptionCheckinRouteImport } from './routes/reception.checkin'
 import { Route as KitchenMenuRouteImport } from './routes/kitchen.menu'
 import { Route as HousekeepingMaintenanceRouteImport } from './routes/housekeeping.maintenance'
+import { Route as AdminRoomsRouteImport } from './routes/admin.rooms'
+import { Route as AdminRestaurantRouteImport } from './routes/admin.restaurant'
+import { Route as AdminReservationsRouteImport } from './routes/admin.reservations'
+import { Route as AdminReportsRouteImport } from './routes/admin.reports'
+import { Route as AdminPricingRouteImport } from './routes/admin.pricing'
+import { Route as AdminInventoryRouteImport } from './routes/admin.inventory'
+import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
 import { Route as AccountRoomServiceRouteImport } from './routes/account.room-service'
 import { Route as AccountReviewsRouteImport } from './routes/account.reviews'
 import { Route as AccountProfileRouteImport } from './routes/account.profile'
@@ -210,6 +218,11 @@ const HousekeepingIndexRoute = HousekeepingIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HousekeepingRoute,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AccountIndexRoute = AccountIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -250,6 +263,41 @@ const HousekeepingMaintenanceRoute = HousekeepingMaintenanceRouteImport.update({
   path: '/maintenance',
   getParentRoute: () => HousekeepingRoute,
 } as any)
+const AdminRoomsRoute = AdminRoomsRouteImport.update({
+  id: '/rooms',
+  path: '/rooms',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminRestaurantRoute = AdminRestaurantRouteImport.update({
+  id: '/restaurant',
+  path: '/restaurant',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReservationsRoute = AdminReservationsRouteImport.update({
+  id: '/reservations',
+  path: '/reservations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminReportsRoute = AdminReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPricingRoute = AdminPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminInventoryRoute = AdminInventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEmployeesRoute = AdminEmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AccountRoomServiceRoute = AccountRoomServiceRouteImport.update({
   id: '/room-service',
   path: '/room-service',
@@ -285,7 +333,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRouteWithChildren
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/conference': typeof ConferenceRoute
@@ -316,6 +364,13 @@ export interface FileRoutesByFullPath {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reservations': typeof AdminReservationsRoute
+  '/admin/restaurant': typeof AdminRestaurantRoute
+  '/admin/rooms': typeof AdminRoomsRoute
   '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
   '/kitchen/menu': typeof KitchenMenuRoute
   '/reception/checkin': typeof ReceptionCheckinRoute
@@ -324,6 +379,7 @@ export interface FileRoutesByFullPath {
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
   '/account/': typeof AccountIndexRoute
+  '/admin/': typeof AdminIndexRoute
   '/housekeeping/': typeof HousekeepingIndexRoute
   '/kitchen/': typeof KitchenIndexRoute
   '/reception/': typeof ReceptionIndexRoute
@@ -331,7 +387,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/conference': typeof ConferenceRoute
@@ -359,6 +414,13 @@ export interface FileRoutesByTo {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reservations': typeof AdminReservationsRoute
+  '/admin/restaurant': typeof AdminRestaurantRoute
+  '/admin/rooms': typeof AdminRoomsRoute
   '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
   '/kitchen/menu': typeof KitchenMenuRoute
   '/reception/checkin': typeof ReceptionCheckinRoute
@@ -367,6 +429,7 @@ export interface FileRoutesByTo {
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
   '/account': typeof AccountIndexRoute
+  '/admin': typeof AdminIndexRoute
   '/housekeeping': typeof HousekeepingIndexRoute
   '/kitchen': typeof KitchenIndexRoute
   '/reception': typeof ReceptionIndexRoute
@@ -376,7 +439,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRouteWithChildren
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/blog': typeof BlogRoute
   '/careers': typeof CareersRoute
   '/conference': typeof ConferenceRoute
@@ -407,6 +470,13 @@ export interface FileRoutesById {
   '/account/profile': typeof AccountProfileRoute
   '/account/reviews': typeof AccountReviewsRoute
   '/account/room-service': typeof AccountRoomServiceRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/inventory': typeof AdminInventoryRoute
+  '/admin/pricing': typeof AdminPricingRoute
+  '/admin/reports': typeof AdminReportsRoute
+  '/admin/reservations': typeof AdminReservationsRoute
+  '/admin/restaurant': typeof AdminRestaurantRoute
+  '/admin/rooms': typeof AdminRoomsRoute
   '/housekeeping/maintenance': typeof HousekeepingMaintenanceRoute
   '/kitchen/menu': typeof KitchenMenuRoute
   '/reception/checkin': typeof ReceptionCheckinRoute
@@ -415,6 +485,7 @@ export interface FileRoutesById {
   '/reception/invoices': typeof ReceptionInvoicesRoute
   '/reception/walkin': typeof ReceptionWalkinRoute
   '/account/': typeof AccountIndexRoute
+  '/admin/': typeof AdminIndexRoute
   '/housekeeping/': typeof HousekeepingIndexRoute
   '/kitchen/': typeof KitchenIndexRoute
   '/reception/': typeof ReceptionIndexRoute
@@ -456,6 +527,13 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/admin/employees'
+    | '/admin/inventory'
+    | '/admin/pricing'
+    | '/admin/reports'
+    | '/admin/reservations'
+    | '/admin/restaurant'
+    | '/admin/rooms'
     | '/housekeeping/maintenance'
     | '/kitchen/menu'
     | '/reception/checkin'
@@ -464,6 +542,7 @@ export interface FileRouteTypes {
     | '/reception/invoices'
     | '/reception/walkin'
     | '/account/'
+    | '/admin/'
     | '/housekeeping/'
     | '/kitchen/'
     | '/reception/'
@@ -471,7 +550,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/admin'
     | '/blog'
     | '/careers'
     | '/conference'
@@ -499,6 +577,13 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/admin/employees'
+    | '/admin/inventory'
+    | '/admin/pricing'
+    | '/admin/reports'
+    | '/admin/reservations'
+    | '/admin/restaurant'
+    | '/admin/rooms'
     | '/housekeeping/maintenance'
     | '/kitchen/menu'
     | '/reception/checkin'
@@ -507,6 +592,7 @@ export interface FileRouteTypes {
     | '/reception/invoices'
     | '/reception/walkin'
     | '/account'
+    | '/admin'
     | '/housekeeping'
     | '/kitchen'
     | '/reception'
@@ -546,6 +632,13 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reviews'
     | '/account/room-service'
+    | '/admin/employees'
+    | '/admin/inventory'
+    | '/admin/pricing'
+    | '/admin/reports'
+    | '/admin/reservations'
+    | '/admin/restaurant'
+    | '/admin/rooms'
     | '/housekeeping/maintenance'
     | '/kitchen/menu'
     | '/reception/checkin'
@@ -554,6 +647,7 @@ export interface FileRouteTypes {
     | '/reception/invoices'
     | '/reception/walkin'
     | '/account/'
+    | '/admin/'
     | '/housekeeping/'
     | '/kitchen/'
     | '/reception/'
@@ -563,7 +657,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRouteWithChildren
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   BlogRoute: typeof BlogRoute
   CareersRoute: typeof CareersRoute
   ConferenceRoute: typeof ConferenceRoute
@@ -809,6 +903,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HousekeepingIndexRouteImport
       parentRoute: typeof HousekeepingRoute
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/account/': {
       id: '/account/'
       path: '/'
@@ -864,6 +965,55 @@ declare module '@tanstack/react-router' {
       fullPath: '/housekeeping/maintenance'
       preLoaderRoute: typeof HousekeepingMaintenanceRouteImport
       parentRoute: typeof HousekeepingRoute
+    }
+    '/admin/rooms': {
+      id: '/admin/rooms'
+      path: '/rooms'
+      fullPath: '/admin/rooms'
+      preLoaderRoute: typeof AdminRoomsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/restaurant': {
+      id: '/admin/restaurant'
+      path: '/restaurant'
+      fullPath: '/admin/restaurant'
+      preLoaderRoute: typeof AdminRestaurantRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reservations': {
+      id: '/admin/reservations'
+      path: '/reservations'
+      fullPath: '/admin/reservations'
+      preLoaderRoute: typeof AdminReservationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reports': {
+      id: '/admin/reports'
+      path: '/reports'
+      fullPath: '/admin/reports'
+      preLoaderRoute: typeof AdminReportsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/pricing': {
+      id: '/admin/pricing'
+      path: '/pricing'
+      fullPath: '/admin/pricing'
+      preLoaderRoute: typeof AdminPricingRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/inventory': {
+      id: '/admin/inventory'
+      path: '/inventory'
+      fullPath: '/admin/inventory'
+      preLoaderRoute: typeof AdminInventoryRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/employees': {
+      id: '/admin/employees'
+      path: '/employees'
+      fullPath: '/admin/employees'
+      preLoaderRoute: typeof AdminEmployeesRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/account/room-service': {
       id: '/account/room-service'
@@ -933,6 +1083,30 @@ const AccountRouteChildren: AccountRouteChildren = {
 const AccountRouteWithChildren =
   AccountRoute._addFileChildren(AccountRouteChildren)
 
+interface AdminRouteChildren {
+  AdminEmployeesRoute: typeof AdminEmployeesRoute
+  AdminInventoryRoute: typeof AdminInventoryRoute
+  AdminPricingRoute: typeof AdminPricingRoute
+  AdminReportsRoute: typeof AdminReportsRoute
+  AdminReservationsRoute: typeof AdminReservationsRoute
+  AdminRestaurantRoute: typeof AdminRestaurantRoute
+  AdminRoomsRoute: typeof AdminRoomsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminEmployeesRoute: AdminEmployeesRoute,
+  AdminInventoryRoute: AdminInventoryRoute,
+  AdminPricingRoute: AdminPricingRoute,
+  AdminReportsRoute: AdminReportsRoute,
+  AdminReservationsRoute: AdminReservationsRoute,
+  AdminRestaurantRoute: AdminRestaurantRoute,
+  AdminRoomsRoute: AdminRoomsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface HousekeepingRouteChildren {
   HousekeepingMaintenanceRoute: typeof HousekeepingMaintenanceRoute
   HousekeepingIndexRoute: typeof HousekeepingIndexRoute
@@ -986,7 +1160,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AccountRoute: AccountRouteWithChildren,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   BlogRoute: BlogRoute,
   CareersRoute: CareersRoute,
   ConferenceRoute: ConferenceRoute,
